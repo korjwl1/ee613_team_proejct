@@ -15,10 +15,14 @@ service EE613_Team_P {
 message Food_Info {
     // Menu ID
     int32 menu_id = 1;
+    // Menu Name
+    string menu_name = 2;
+    // Menu Price
+    int32 menu_price = 3;
     // Menu Quantity
-    int32 menu_num = 2;
+    int32 menu_num = 4;
     // Menu Image
-    bytes menu_img = 3;
+    bytes menu_img = 5;
 }
 
 message Login_Respond {

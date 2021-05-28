@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import ee613_team_pb2 as ee613__team__pb2
+from . import ee613_team_pb2 as ee613__team__pb2
 
 
 class EE613_Team_PStub(object):

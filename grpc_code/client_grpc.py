@@ -16,10 +16,7 @@ class Food_Order_C():
 def grpc_Login(stub, usrid, usrpwd):
     Request = pb.User_Info(u_id=usrid, u_pwd=usrpwd)
     Response = stub.Login_(Request)
-    if (Response.login_success):
-        return Response.fd_info
-    else:
-        return None
+    return Response.login_success, Response.fd_info
 
 # Sigin
 def grpc_Signup(stub, usrid, usrpwd):

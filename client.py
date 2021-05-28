@@ -23,7 +23,7 @@ if __name__ == '__main__':
     login_ui = LoginUI(stub)
     ma_ui = Main_UI(w)
     me_ui = Menu_UI()
-    r_ui = Recharge_UI()
+    r_ui = Recharge_UI(stub)
     w.addWidget(login_ui)
     w.addWidget(ma_ui)
     w.addWidget(me_ui)
@@ -31,16 +31,16 @@ if __name__ == '__main__':
 
     # UI Transitions
     # login
-    login_ui.Login_Btn.clicked.connect(lambda: login_ui.login(w, stub))
-    login_ui.Input_ID.returnPressed.connect(lambda: login_ui.login(w, stub))
-    login_ui.Input_PWD.returnPressed.connect(lambda: login_ui.login(w, stub))
+    login_ui.Login_Btn.clicked.connect(lambda: login_ui.login(w, stub, ma_ui))
+    login_ui.Input_ID.returnPressed.connect(lambda: login_ui.login(w, stub, ma_ui))
+    login_ui.Input_PWD.returnPressed.connect(lambda: login_ui.login(w, stub, ma_ui))
     # order menu
     ma_ui.Order_Btn.clicked.connect(lambda: w.setCurrentIndex(2))
     # recharge menu
-    ma_ui.Recharge_Btn.clicked.connect(lambda: w.setCurrentIndex(3))
+    ma_ui.Recharge_Btn.clicked.connect(lambda: ma_ui.Recharge_(stub, w, r_ui))
     # return
     me_ui.Return_Btn.clicked.connect(lambda: w.setCurrentIndex(1))
-    r_ui.Return_Btn.clicked.connect(lambda: w.setCurrentIndex(1))
+    r_ui.Return_Btn.clicked.connect(lambda: r_ui.return_(stub,w,ma_ui))
     # initial window size
     w.resize(440,550)
     w.show()
