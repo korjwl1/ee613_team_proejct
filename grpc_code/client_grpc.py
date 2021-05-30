@@ -1,6 +1,7 @@
 import grpc
 from . import ee613_team_pb2 as pb
 from . import ee613_team_pb2_grpc as pb_grpc
+import data_class as dc
 
 # Food Order Class
 class Food_Order_C():
@@ -12,11 +13,15 @@ class Food_Order_C():
         self.order_dict[menu_id] = menu_num
         self.Total_Cost += menu_cost
 
-# Login 
+# Login / Refreshing the menu info
 def grpc_Login(stub, usrid, usrpwd):
     Request = pb.User_Info(u_id=usrid, u_pwd=usrpwd)
     Response = stub.Login_(Request)
-    return Response.login_success, Response.fd_info
+    # save the food info
+    for menus in Response.fd_info:
+        dc.menu_info[menus.menu_id] = [menus.menu_name, menus.menu_price, menus.menu_num]
+    # print(dc.menu_info)
+    return Response.login_success
 
 # Sigin
 def grpc_Signup(stub, usrid, usrpwd):
@@ -28,9 +33,14 @@ def grpc_Signup(stub, usrid, usrpwd):
         return False
 
 # Order_Food
-def grpc_OrderFood(stub, usrid, usrpwd, orderinfo):
-    Request_uif = pb.User_Info(u_id=usrid, u_pwd=usrpwd)
-    return None
+def grpc_OrderFood(stub, orders_info, total_cost):
+    Request_uif = pb.User_Info(u_id=dc.login_info['id'], u_pwd=dc.login_info['pwd'])
+    orders = []
+    for menu_id in orders_info:
+        orders.append(pb.Orders_(menu_id=menu_id, menu_num=orders_info[menu_id]))
+    Request = pb.Food_Order(orders_=orders, total_cost=total_cost, uif=Request_uif)
+    Response = stub.Order_Food(Request)
+    return Response.istrue, Response.remaining_points
 
 # Point Check
 def grpc_CheckPoint(stub, usrid, usrpwd):

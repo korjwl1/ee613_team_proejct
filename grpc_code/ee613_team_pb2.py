@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x10\x65\x65\x36\x31\x33_team.proto\x12\nee613_team\"@\n\tFood_Info\x12\x0f\n\x07menu_id\x18\x01 \x01(\x05\x12\x10\n\x08menu_num\x18\x02 \x01(\x05\x12\x10\n\x08menu_img\x18\x03 \x01(\x0c\"N\n\rLogin_Respond\x12\x15\n\rlogin_success\x18\x01 \x01(\x08\x12&\n\x07\x66\x64_info\x18\x02 \x03(\x0b\x32\x15.ee613_team.Food_Info\"(\n\x0eSignin_Respond\x12\x16\n\x0esignin_success\x18\x01 \x01(\x08\"(\n\tUser_Info\x12\x0c\n\x04u_id\x18\x01 \x01(\t\x12\r\n\x05u_pwd\x18\x02 \x01(\t\",\n\x07Orders_\x12\x0f\n\x07menu_id\x18\x01 \x01(\x05\x12\x10\n\x08menu_num\x18\x02 \x01(\x05\"j\n\nFood_Order\x12$\n\x07orders_\x18\x01 \x03(\x0b\x32\x13.ee613_team.Orders_\x12\x12\n\ntotal_cost\x18\x02 \x01(\x05\x12\"\n\x03uif\x18\x03 \x01(\x0b\x32\x15.ee613_team.User_Info\"9\n\rOrder_Respond\x12\x0e\n\x06istrue\x18\x01 \x01(\x08\x12\x18\n\x10remaining_points\x18\x02 \x01(\x05\",\n\x10Remaining_Points\x12\x18\n\x10remaining_points\x18\x01 \x01(\x05\"Q\n\x10Recharge_Request\x12\"\n\x03uif\x18\x01 \x01(\x0b\x32\x15.ee613_team.User_Info\x12\x19\n\x11recharging_points\x18\x02 \x01(\x05\x32\xe4\x02\n\x0c\x45\x45\x36\x31\x33_Team_P\x12<\n\x06Login_\x12\x15.ee613_team.User_Info\x1a\x19.ee613_team.Login_Respond\"\x00\x12=\n\x06Signin\x12\x15.ee613_team.User_Info\x1a\x1a.ee613_team.Signin_Respond\"\x00\x12\x41\n\nOrder_Food\x12\x16.ee613_team.Food_Order\x1a\x19.ee613_team.Order_Respond\"\x00\x12\x44\n\x0bPoint_Check\x12\x15.ee613_team.User_Info\x1a\x1c.ee613_team.Remaining_Points\"\x00\x12N\n\x0ePoint_Recharge\x12\x1c.ee613_team.Recharge_Request\x1a\x1c.ee613_team.Remaining_Points\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x10\x65\x65\x36\x31\x33_team.proto\x12\nee613_team\"g\n\tFood_Info\x12\x0f\n\x07menu_id\x18\x01 \x01(\x05\x12\x11\n\tmenu_name\x18\x02 \x01(\t\x12\x12\n\nmenu_price\x18\x03 \x01(\x05\x12\x10\n\x08menu_num\x18\x04 \x01(\x05\x12\x10\n\x08menu_img\x18\x05 \x01(\x0c\"N\n\rLogin_Respond\x12\x15\n\rlogin_success\x18\x01 \x01(\x08\x12&\n\x07\x66\x64_info\x18\x02 \x03(\x0b\x32\x15.ee613_team.Food_Info\"(\n\x0eSignin_Respond\x12\x16\n\x0esignin_success\x18\x01 \x01(\x08\"(\n\tUser_Info\x12\x0c\n\x04u_id\x18\x01 \x01(\t\x12\r\n\x05u_pwd\x18\x02 \x01(\t\",\n\x07Orders_\x12\x0f\n\x07menu_id\x18\x01 \x01(\x05\x12\x10\n\x08menu_num\x18\x02 \x01(\x05\"j\n\nFood_Order\x12$\n\x07orders_\x18\x01 \x03(\x0b\x32\x13.ee613_team.Orders_\x12\x12\n\ntotal_cost\x18\x02 \x01(\x05\x12\"\n\x03uif\x18\x03 \x01(\x0b\x32\x15.ee613_team.User_Info\"9\n\rOrder_Respond\x12\x0e\n\x06istrue\x18\x01 \x01(\x08\x12\x18\n\x10remaining_points\x18\x02 \x01(\x05\",\n\x10Remaining_Points\x12\x18\n\x10remaining_points\x18\x01 \x01(\x05\"Q\n\x10Recharge_Request\x12\"\n\x03uif\x18\x01 \x01(\x0b\x32\x15.ee613_team.User_Info\x12\x19\n\x11recharging_points\x18\x02 \x01(\x05\x32\xe4\x02\n\x0c\x45\x45\x36\x31\x33_Team_P\x12<\n\x06Login_\x12\x15.ee613_team.User_Info\x1a\x19.ee613_team.Login_Respond\"\x00\x12=\n\x06Signin\x12\x15.ee613_team.User_Info\x1a\x1a.ee613_team.Signin_Respond\"\x00\x12\x41\n\nOrder_Food\x12\x16.ee613_team.Food_Order\x1a\x19.ee613_team.Order_Respond\"\x00\x12\x44\n\x0bPoint_Check\x12\x15.ee613_team.User_Info\x1a\x1c.ee613_team.Remaining_Points\"\x00\x12N\n\x0ePoint_Recharge\x12\x1c.ee613_team.Recharge_Request\x1a\x1c.ee613_team.Remaining_Points\"\x00\x62\x06proto3'
 )
 
 
@@ -41,15 +41,29 @@ _FOOD_INFO = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='menu_num', full_name='ee613_team.Food_Info.menu_num', index=1,
-      number=2, type=5, cpp_type=1, label=1,
+      name='menu_name', full_name='ee613_team.Food_Info.menu_name', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='menu_price', full_name='ee613_team.Food_Info.menu_price', index=2,
+      number=3, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='menu_img', full_name='ee613_team.Food_Info.menu_img', index=2,
-      number=3, type=12, cpp_type=9, label=1,
+      name='menu_num', full_name='ee613_team.Food_Info.menu_num', index=3,
+      number=4, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='menu_img', full_name='ee613_team.Food_Info.menu_img', index=4,
+      number=5, type=12, cpp_type=9, label=1,
       has_default_value=False, default_value=b"",
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -67,7 +81,7 @@ _FOOD_INFO = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=32,
-  serialized_end=96,
+  serialized_end=135,
 )
 
 
@@ -105,8 +119,8 @@ _LOGIN_RESPOND = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=98,
-  serialized_end=176,
+  serialized_start=137,
+  serialized_end=215,
 )
 
 
@@ -137,8 +151,8 @@ _SIGNIN_RESPOND = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=178,
-  serialized_end=218,
+  serialized_start=217,
+  serialized_end=257,
 )
 
 
@@ -176,8 +190,8 @@ _USER_INFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=220,
-  serialized_end=260,
+  serialized_start=259,
+  serialized_end=299,
 )
 
 
@@ -215,8 +229,8 @@ _ORDERS_ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=262,
-  serialized_end=306,
+  serialized_start=301,
+  serialized_end=345,
 )
 
 
@@ -261,8 +275,8 @@ _FOOD_ORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=308,
-  serialized_end=414,
+  serialized_start=347,
+  serialized_end=453,
 )
 
 
@@ -300,8 +314,8 @@ _ORDER_RESPOND = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=416,
-  serialized_end=473,
+  serialized_start=455,
+  serialized_end=512,
 )
 
 
@@ -332,8 +346,8 @@ _REMAINING_POINTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=475,
-  serialized_end=519,
+  serialized_start=514,
+  serialized_end=558,
 )
 
 
@@ -371,8 +385,8 @@ _RECHARGE_REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=521,
-  serialized_end=602,
+  serialized_start=560,
+  serialized_end=641,
 )
 
 _LOGIN_RESPOND.fields_by_name['fd_info'].message_type = _FOOD_INFO
@@ -462,8 +476,8 @@ _EE613_TEAM_P = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=605,
-  serialized_end=961,
+  serialized_start=644,
+  serialized_end=1000,
   methods=[
   _descriptor.MethodDescriptor(
     name='Login_',

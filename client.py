@@ -21,8 +21,8 @@ if __name__ == '__main__':
     app=QApplication(sys.argv)
     w = QStackedWidget()
     login_ui = LoginUI(stub)
-    ma_ui = Main_UI(w)
-    me_ui = Menu_UI()
+    me_ui = Menu_UI(stub, w)
+    ma_ui = Main_UI(stub, w, me_ui)
     r_ui = Recharge_UI(stub)
     w.addWidget(login_ui)
     w.addWidget(ma_ui)
@@ -34,8 +34,6 @@ if __name__ == '__main__':
     login_ui.Login_Btn.clicked.connect(lambda: login_ui.login(w, stub, ma_ui))
     login_ui.Input_ID.returnPressed.connect(lambda: login_ui.login(w, stub, ma_ui))
     login_ui.Input_PWD.returnPressed.connect(lambda: login_ui.login(w, stub, ma_ui))
-    # order menu
-    ma_ui.Order_Btn.clicked.connect(lambda: w.setCurrentIndex(2))
     # recharge menu
     ma_ui.Recharge_Btn.clicked.connect(lambda: ma_ui.Recharge_(stub, w, r_ui))
     # return

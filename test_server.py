@@ -2,6 +2,7 @@ import grpc
 import grpc_code.ee613_team_pb2 as pb
 import grpc_code.ee613_team_pb2_grpc as pb_grpc
 from concurrent import futures
+import menu_class as mc
 
 class Members():
     def __init__(self):
@@ -30,24 +31,28 @@ class Members():
         else:
             self.members[id_] = [pwd_, point_]
             return True
-        
-
 
 class ee613_server(pb_grpc.EE613_Team_PServicer):
     def __init__(self):
         super().__init__()
         self.member_class = Members()
 
+    # Login_ success or fail + menu
     def Login_(self, request, context):
         if self.member_class.has_id(request.u_id):
             print("ID found")
             if self.member_class.login_(request.u_id, request.u_pwd):
-                response = pb.Login_Respond(login_success=True)
+                menu_info = []
+                # read mc, and then keep sending the menu info
+                for menu_id in mc.menu_class:
+                    menu_info.append(pb.Food_Info(menu_id=menu_id, menu_name=mc.menu_class[menu_id][0], menu_price=mc.menu_class[menu_id][1], menu_num=mc.menu_class[menu_id][2]))
+                response = pb.Login_Respond(login_success=True, fd_info=menu_info)
                 print("Login Success")
+
             else:
                 response = pb.Login_Respond(login_success=False)
         else:
-            response = pb.Login_Respond(login_sucess=False)
+            response = pb.Login_Respond(login_success=False)
         return response
     
     def Signin(self, request, context):
@@ -59,7 +64,30 @@ class ee613_server(pb_grpc.EE613_Team_PServicer):
         return response
     
     def Order_Food(self, request, context):
-        return super().Order_Food(request, context)
+        istrue_ = True
+        tc = 0
+        # first, check the order info - > request.orders
+        for order in request.orders_:
+            if mc.menu_class[order.menu_id][2] < order.menu_num:
+                istrue_= False
+                break
+        # check whether the total cost is right
+        if istrue_:
+            for order in request.orders_:
+                tc += mc.menu_class[order.menu_id][1] * order.menu_num
+            if tc != request.total_cost:
+                istrue_ = False
+        # check the remaining points
+        if istrue_:
+            if self.member_class.current_point(request.uif.u_id) >= tc:
+                self.member_class.members[request.uif.u_id][1] -= tc
+            else:
+                istrue_ = False
+        if istrue_:
+            for order in request.orders_:
+                mc.menu_class[order.menu_id][2] -= order.menu_num
+        response=pb.Order_Respond(istrue=istrue_,remaining_points=self.member_class.current_point(request.uif.u_id))
+        return response
 
     def Point_Check(self, request, context):
         response = pb.Remaining_Points(remaining_points=self.member_class.current_point(request.u_id))

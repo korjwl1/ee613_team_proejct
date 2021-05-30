@@ -21,7 +21,7 @@ class LoginUI(QMainWindow, lui):
         ID = self.Input_ID.text()
         PWD = self.Input_PWD.text()
         # send the User Information to the server and if succec, save it until logout
-        success_, menu_info = gp.grpc_Login(stub, ID, PWD)
+        success_ = gp.grpc_Login(stub, ID, PWD)
 
         print(success_)
         
