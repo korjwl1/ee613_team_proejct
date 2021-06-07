@@ -21,6 +21,9 @@ class Main_UI(QMainWindow, maui):
         w.setCurrentIndex(0)
 
     def get_points(self, stub, usrid, usrpwd):
+        # set the user id
+        tmp = 'User ID: ' + usrid
+        self.Uid.setText(tmp)
         # get informations from the gRPC server
         rpoint = gp.grpc_CheckPoint(stub, usrid, usrpwd)
         temp = 'Remaining Points: ' + str(rpoint)
