@@ -8,8 +8,8 @@ import grpc_code.client_grpc as gp
 from .TimerMessage import *
 
 
-import speech_recognition as sr
-from nltk.tokenize import word_tokenize
+import SpeechRecognition as sr
+
 
 meui = uic.loadUiType("ui/Menu_UI.ui")[0]
 
