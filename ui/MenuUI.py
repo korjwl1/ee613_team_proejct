@@ -63,7 +63,7 @@ class Menu_UI(QMainWindow, meui):
         # mic functions
         text = self.SR.read_from_microphone()
         
-        words = self.sr.voice_str_parser(text)
+        words = self.SR.voice_str_parser(text)
         me_msg = "Your order:  " + " ".join(words)
         messagebox = TimerMessageBox(5, self, me_msg)
         messagebox.exec_()
