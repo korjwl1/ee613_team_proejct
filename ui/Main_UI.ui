@@ -23,8 +23,13 @@
    <layout class="QVBoxLayout" name="verticalLayout" stretch="5,0,3,1">
     <item>
      <widget class="QLabel" name="label">
+      <property name="font">
+       <font>
+        <pointsize>25</pointsize>
+       </font>
+      </property>
       <property name="text">
-       <string>Application Name Or Logo</string>
+       <string>Food Order App</string>
       </property>
      </widget>
     </item>
