@@ -8,7 +8,7 @@ import data_class as dc
 rui = uic.loadUiType("ui/Recharge.ui")[0]
 
 class Recharge_UI(QMainWindow, rui):
-    def __init__(self, stub):
+    def __init__(self, stub, w):
         super().__init__()
         self.setupUi(self)
         self.cp = 0
@@ -20,6 +20,12 @@ class Recharge_UI(QMainWindow, rui):
         # Button/QlineEdit Actions
         self.APRecharge.textChanged.connect(self.aft_point)
         self.Recharge_Btn.clicked.connect(lambda: self.recharge_(stub))
+        self.actionLogOut.triggered.connect(lambda: self.logout(w))
+
+    def logout(self,  w):
+        dc.login_info['id'] = ''
+        dc.login_info['pwd'] = ''
+        w.setCurrentIndex(0)
 
     # Current Point
     def cur_point(self, stub, usrid, usrpwd):

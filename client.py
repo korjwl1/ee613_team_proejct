@@ -23,7 +23,7 @@ if __name__ == '__main__':
     login_ui = LoginUI(stub)
     me_ui = Menu_UI(stub, w)
     ma_ui = Main_UI(stub, w, me_ui)
-    r_ui = Recharge_UI(stub)
+    r_ui = Recharge_UI(stub, w)
     w.addWidget(login_ui)
     w.addWidget(ma_ui)
     w.addWidget(me_ui)

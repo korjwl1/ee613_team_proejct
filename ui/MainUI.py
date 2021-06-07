@@ -13,7 +13,13 @@ class Main_UI(QMainWindow, maui):
         self.setupUi(self)
         # Button Actions
         self.Order_Btn.clicked.connect(lambda: self.Order_(stub, w, me_ui))
+        self.actionLogOut.triggered.connect(lambda: self.logout(w))
     
+    def logout(self,  w):
+        dc.login_info['id'] = ''
+        dc.login_info['pwd'] = ''
+        w.setCurrentIndex(0)
+
     def get_points(self, stub, usrid, usrpwd):
         # get informations from the gRPC server
         rpoint = gp.grpc_CheckPoint(stub, usrid, usrpwd)
