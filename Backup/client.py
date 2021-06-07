@@ -18,7 +18,7 @@ if __name__ == '__main__':
     stub = gp.grpc_Initialize()
 
     # QT Initialization
-    app = QApplication(sys.argv)
+    app=QApplication(sys.argv)
     w = QStackedWidget()
     login_ui = LoginUI(stub)
     me_ui = Menu_UI(stub, w)

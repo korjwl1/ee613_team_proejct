@@ -1,0 +1,77 @@
+syntax = "proto3";
+package ee613_team;
+
+service EE613_Team_P {
+    // Login and then Food_Info
+    rpc Login_ (User_Info) returns (Login_Respond) {}
+    // Signin
+    rpc Signin (User_Info) returns (Signin_Respond) {}
+    // For food order, we need information of user, menus and qunatity
+    rpc Order_Food (Food_Order) returns (Order_Respond) {}
+    rpc Point_Check (User_Info) returns (Remaining_Points) {}
+    rpc Point_Recharge (Recharge_Request) returns (Remaining_Points) {}
+}
+
+message Food_Info {
+    // Menu ID
+    int32 menu_id = 1;
+    // Menu Name
+    string menu_name = 2;
+    // Menu Price
+    int32 menu_price = 3;
+    // Menu Quantity
+    int32 menu_num = 4;
+    // Menu Image
+    bytes menu_img = 5;
+}
+
+message Login_Respond {
+    bool login_success = 1;
+    repeated Food_Info fd_info = 2;
+}
+
+message Signin_Respond {
+    bool signin_success = 1;
+}
+
+message User_Info {
+    // User ID
+    string u_id = 1;
+    // PassWord
+    string u_pwd = 2;
+}
+
+message Orders_ {
+    // Menu ID
+    int32 menu_id = 1;
+    // Quantity 
+    int32 menu_num = 2;
+}
+
+message Food_Order {
+    // Orders
+    repeated Orders_ orders_ = 1;
+    // Total Cost
+    int32 total_cost = 2;
+    // User_Info
+    User_Info uif = 3;
+}
+
+message Order_Respond {
+    // whether the order is received or not
+    bool istrue = 1;
+    // remaining point
+    int32 remaining_points = 2;
+}
+
+message Remaining_Points {
+    // remaining points 
+    int32 remaining_points = 1;
+}
+
+message Recharge_Request {
+    // User_Info
+    User_Info uif = 1;
+    // How many points?
+    int32 recharging_points = 2;
+}

@@ -7,10 +7,6 @@ import data_class as dc
 import grpc_code.client_grpc as gp
 from .TimerMessage import *
 
-
-import speech_recognition as sr
-from nltk.tokenize import word_tokenize
-
 meui = uic.loadUiType("ui/Menu_UI.ui")[0]
 
 
@@ -22,9 +18,7 @@ class Menu_UI(QMainWindow, meui):
         self.menu_price = {}
         self.total = 0
         self.Order_Btn.clicked.connect(lambda: self.order(stub))
-        self.Voice_Btn.clicked.connect(lambda: self.voice())
         self.actionLogOut.triggered.connect(lambda: self.logout(w))
-        self.SR = sr.Recognizer()
     
     def logout(self,  w):
         dc.login_info['id'] = ''
@@ -59,41 +53,7 @@ class Menu_UI(QMainWindow, meui):
         self.total_c.setText(str(self.total))
     
     def voice(self):
-        # dc.menu_info[0][2] = 4
-        # mic functions
-        text = self.SR.read_from_microphone()
-        
-        words = self.sr.voice_str_parser(text)
-        me_msg = "Your order:  " + " ".join(words)
-        messagebox = TimerMessageBox(5, self, me_msg)
-        messagebox.exec_()
-
-        #process words
-        #case   convert numbers to word numbers 
-        nums = {'one':1, 'two':2, 'three':3, 'four':4, 'five':5, 'six':6, 'seven':7, 'eight':8, 'nine':9}
-
-        # foods dict creation
-        foods = {}
-        for ids in dc.menu_info:
-            foods[dc.menu_info[ids][0]] = ids
-
-
-        order_data = {} 
-        # dictionary {'menu_id' : '# of order'} 
-        for i in range(len(words)):
-            if words[i] in nums: 
-                if words[i+1] in foods:
-                    #print(nums[words[i]], foods[words[i+1]])
-                    order_data[foods[words[i+1]]] = nums[words[i]]
-        print("dictionary = {menuid: order number}")            
-        print(order_data)
-
-        
-       # olist={0: 1, 4: 1, 3: 1, 6: 1, 2: 1}
-        for i in order_data:
-            self.menu_row_list[i].children()[5].setValue(order_data[i])
-
-        #return None
+        return None
 
     def createMenuRow(self, menu_id, menu_name, menu_price, menu_num):
         menu_row = QWidget()
